@@ -66,6 +66,3 @@ def off() {
 def setSceneNo(sceneNo) {
 	state.sceneNo = sceneNo
 }
-
-
-

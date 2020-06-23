@@ -81,6 +81,3 @@ def setLevel(percent) {
 def setShadeNo(shadeNo) {
 	state.shadeNo = shadeNo
 }
-
-
-
