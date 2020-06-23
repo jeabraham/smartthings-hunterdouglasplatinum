@@ -81,7 +81,9 @@ def getHubId() {
 
 /////////////////////////////////////
 def addgateway() {
-	state.gatewayHex = makeNetworkId(gatewayIP,522)
+	if(!state.gatewayHex) {
+		state.gatewayHex = makeNetworkId(gatewayIP,522)
+	}
 }
 
 
