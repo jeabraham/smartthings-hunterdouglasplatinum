@@ -29,8 +29,8 @@ metadata {
 
 	tiles {
 		standardTile("switch", "device.window shade", width: 1, height: 1, canChangeIcon: true) {
-				state "close", label: '${name}', action: "window shade.close", icon: "st.switches.switch.on", backgroundColor: "#79b821"
-				state "open", label: '${name}', action: "window shade.open", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
+				state "closed", label: '${name}', action: "window shade.open", icon: "st.Home.home9", backgroundColor: "#79b821"
+				state "open", label: '${name}', action: "window shade.close", icon: "st.Home.home9", backgroundColor: "#ffffff"
 			}
 		controlTile("levelSliderControl", "device.level", "slider", height: 1, width: 2, inactiveLabel: false) {
 			state "level", action:"switch level.setLevel"
@@ -55,19 +55,19 @@ def updated() {
 }
 
 def close() {
-	return setLevel(100)
+	return setLevel(0)
 }
 
 def open() {
-	return setLevel(0)
+	return setLevel(100)
 }
 
 def setLevel(percent) {
 	parent.setShadeLevel(state.shadeNo, 100 - percent)
 	if(percent == 0) {
-		sendEvent(name: "switch", value: "on")
+		sendEvent(name: "switch", value: "closed")
 	} else if (percent == 100) {
-		sendEvent(name: "switch", value: "off")
+		sendEvent(name: "switch", value: "open")
 	}
 	sendEvent(name: "level", value: percent)
 }
