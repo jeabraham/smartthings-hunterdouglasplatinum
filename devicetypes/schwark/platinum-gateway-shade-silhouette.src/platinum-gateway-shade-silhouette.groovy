@@ -17,7 +17,7 @@
  */
 
 metadata {
-	definition (name: "Platinum Gateway Shade Shade", namespace: "schwark", author: "John Abraham") {
+	definition (name: "Platinum Gateway Shade Silhouette", namespace: "schwark", author: "John Abraham") {
 	capability "Window Shade"
 	capability "Switch Level"
 	command "setShadeNo", ["string"]
