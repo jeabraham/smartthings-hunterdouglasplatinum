@@ -21,6 +21,7 @@ metadata {
 	capability "Window Shade"
 	capability "Switch Level"
 	command "setShadeNo", ["string"]
+    command "setVanes", ["number"]
 	}
 
 	simulator {
@@ -32,11 +33,16 @@ metadata {
 				state "closed", label: '${name}', action: "window shade.open", icon: "st.Home.home9", backgroundColor: "#79b821"
 				state "open", label: '${name}', action: "window shade.close", icon: "st.Home.home9", backgroundColor: "#ffffff"
 			}
-		controlTile("levelSliderControl", "device.level", "slider", height: 1, width: 2, inactiveLabel: false) {
+		controlTile("levelSliderControl", "device.level", "slider", height: 2, width: 2, inactiveLabel: false) {
 			state "level", action:"switch level.setLevel"
 		}
+		controlTile("mediumSlider", "device.vanes", "slider", height: 1, width: 2, inactiveLabel: false) {
+			state "vanes", action:"setVanes"
+		}
+
+
 		main("switch")
-		details(["switch", "levelSliderControl"])
+		details(["switch", "levelSliderControl", "mediumSlider"])
 	}
 }
 
@@ -71,6 +77,17 @@ def setLevel(percent) {
 	}
 	sendEvent(name: "level", value: percent)
 }
+
+def setVanes(percent) {
+	log.debug "Setting Vanes on Shade ${shadeNo} to ${percent}%"
+	def vaneValue = 255 - (percent * 2.55).toInteger()
+	log.debug "Setting Vanes on Shade ${state.shadeNo} to ${vaneValue} value"
+	def msg = String.format("\$pss%s-07-%03d",state.shadeNo,vaneValue)
+	parent.sendMessage(["msg":msg])
+	parent.runIn(1, "sendMessage", [overwrite: false, data:["msg":"\$rls"]])
+
+}
+
 
 def setShadeNo(shadeNo) {
 	state.shadeNo = shadeNo
