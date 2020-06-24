@@ -176,7 +176,7 @@ def processState(info) {
       def shade_id = line[3..4]
       def shade_name = parts[-1].trim()
       def room_id = parts[1]
-      // TODO from the room ID can find whether it's a Silhhoette shade with vane control 
+      // TODO from the room ID can find whether it's a Silhouette shade with vane control 
       log.debug("found shade with ${shade_id} and ${shade_name}")
       DB['shades'][shade_id] = ['name':shade_name, 'id':shade_id, 'search':shade_name.toLowerCase(), 'room': room_id]
     } else if(line.startsWith("\$cp")) {

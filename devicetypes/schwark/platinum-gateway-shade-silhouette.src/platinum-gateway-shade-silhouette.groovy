@@ -28,14 +28,14 @@ metadata {
 		}
 
 	tiles {
-		standardTile("window shade", "device.window shade", width: 1, height: 1, canChangeIcon: true) {
+		standardTile("switch", "device.window shade", width: 1, height: 1, canChangeIcon: true) {
 				state "close", label: '${name}', action: "window shade.close", icon: "st.switches.switch.on", backgroundColor: "#79b821"
 				state "open", label: '${name}', action: "window shade.open", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
 			}
 		controlTile("levelSliderControl", "device.level", "slider", height: 1, width: 2, inactiveLabel: false) {
 			state "level", action:"switch level.setLevel"
 		}
-		main "window shade"
+		main("switch")
 		details(["switch", "levelSliderControl"])
 	}
 }
@@ -54,11 +54,11 @@ def initialize() {
 def updated() {
 }
 
-def on() {
+def close() {
 	return setLevel(100)
 }
 
-def off() {
+def open() {
 	return setLevel(0)
 }
 
