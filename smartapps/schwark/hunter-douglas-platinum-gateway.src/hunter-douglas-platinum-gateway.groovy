@@ -176,6 +176,7 @@ def processState(info) {
       def shade_id = line[3..4]
       def shade_name = parts[-1].trim()
       def room_id = parts[1]
+      // TODO from the room ID can find whether it's a Silhhoette shade with vane control 
       log.debug("found shade with ${shade_id} and ${shade_name}")
       DB['shades'][shade_id] = ['name':shade_name, 'id':shade_id, 'search':shade_name.toLowerCase(), 'room': room_id]
     } else if(line.startsWith("\$cp")) {
@@ -310,7 +311,8 @@ def updateShades(DB) {
 		log.debug("processing shade ${id} with name ${name}")
 		def PREFIX = "PLATINUMGATEWAYSHADE"
 		def hubId = getHubId()
-		def shadeDevice = addChildDevice("schwark", "Platinum Gateway Shade Switch", "${PREFIX}${id}", hubId, ["name": "PlatinumShade.${id}", "label": "${namePrefix}${name}", "completedSetup": true])
+		// def shadeDevice = addChildDevice("schwark", "Platinum Gateway Shade Switch", "${PREFIX}${id}", hubId, ["name": "PlatinumShade.${id}", "label": "${namePrefix}${name}", "completedSetup": true])
+		def shadeDevice = addChildDevice("schwark", "Platinum Gateway Shade Silhouette", "${PREFIX}${id}", hubId, ["name": "PlatinumShade.${id}", "label": "${namePrefix}${name}", "completedSetup": true])
 		log.debug("created child device ${PREFIX}${id} for shade ${id} with name ${name} and hub ${hubId}")
 		shadeDevice.setShadeNo(id)
 		state.shades[id] = shadeDevice

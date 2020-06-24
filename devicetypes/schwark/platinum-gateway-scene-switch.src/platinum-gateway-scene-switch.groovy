@@ -28,23 +28,24 @@ metadata {
 	command "runScene"
 	}
 
-simulator {
-		// TODO: define status and reply messages here
-	}
+	simulator {
+			// TODO: define status and reply messages here
+		}
 
-tiles {
-	standardTile("switch", "device.switch", width: 1, height: 1, canChangeIcon: true) {
-        	state "on", label: '${name}', action: "switch.off", icon: "st.switches.switch.on", backgroundColor: "#79b821"
-        	state "off", label: '${name}', action: "switch.on", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
-   		}
+	tiles {
+		standardTile("switch", "device.switch", width: 1, height: 1, canChangeIcon: true) {
+				state "on", label: '${name}', action: "switch.off", icon: "st.switches.switch.on", backgroundColor: "#79b821"
+				state "off", label: '${name}', action: "switch.on", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
+			}
+		
+		main "switch"
+		details(["switch"])
 	}
+}
 
 preferences {
 }
 
-    main "switch"
-    details(["switch"])
-}
 
 def updated() {
 }

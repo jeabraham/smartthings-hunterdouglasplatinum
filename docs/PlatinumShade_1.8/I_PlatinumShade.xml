@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<implementation>
+  <files>L_PlatinumShade.lua</files>
+  <startup>PlatinumShade_Startup</startup>
+  <incoming>
+  	<lua>
+  		PlatinumShade_Incoming(lul_data)
+  	</lua>
+  </incoming>
+  <actionList>
+	<action>
+		<serviceId>urn:upnp-org:serviceId:Dimming1</serviceId>
+		<name>SetLoadLevelTarget</name>
+		<run>
+			local id = luup.devices[lul_device].id
+		    local target = tonumber(lul_settings.newLoadlevelTarget)
+			return PlatinumShade_SetTarget(lul_device, id, target, 0)
+		</run>
+	</action>
+	<action>
+		<serviceId>urn:upnp-org:serviceId:SwitchPower1</serviceId>
+		<name>SetTarget</name>
+		<run>
+			local id = luup.devices[lul_device].id
+		    local target = tonumber(lul_settings.newLoadlevelTarget) * 100
+			return PlatinumShade_SetTarget(lul_device, id, target, 1)
+		</run>
+	</action>
+	<action>
+		<serviceId>urn:upnp-org:serviceId:WindowCovering1</serviceId>
+		<name>Up</name>
+		<run>
+			local id = luup.devices[lul_device].id
+		    local target = 100
+			return PlatinumShade_SetTarget(lul_device, id, target, 1)
+		</run>
+	</action>
+	<action>
+		<serviceId>urn:upnp-org:serviceId:WindowCovering1</serviceId>
+		<name>Down</name>
+		<run>
+			local id = luup.devices[lul_device].id
+		    local target = 0
+			return PlatinumShade_SetTarget(lul_device, id, target, 1)
+		</run>
+	</action>
+	<action>
+		<serviceId>urn:upnp-org:serviceId:WindowCovering1</serviceId>
+		<name>Stop</name>
+		<run>
+			-- Set to "intermediate stop"
+			local id = luup.devices[lul_device].id
+		    local target = 50
+			return PlatinumShade_SetTarget(lul_device, id, target, 2)
+		</run>
+	</action>
+    <action>
+        <serviceId>urn:gengen_mcv-org:serviceId:PlatimumShade</serviceId>
+        <name>SetFeatureTarget</name>
+        <run>
+			local id = luup.devices[lul_device].id
+		    local feature = tonumber(lul_settings.newFeature)
+		    local target = tonumber(lul_settings.newTarget)
+			return PlatinumShade_SetFeatureTarget(lul_device, id, feature, target)
+        </run>
+    </action>
+
+  </actionList>
+</implementation>

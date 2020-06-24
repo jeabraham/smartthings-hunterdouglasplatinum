@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:schemas-gengen_mcv-org:device:PlatinumShade:1</deviceType>
+    <friendlyName>Platinum Shade Controller</friendlyName>
+    <manufacturer>Hunter Douglas</manufacturer>
+    <manufacturerURL>http://www.hunterdouglas.com/</manufacturerURL>
+    <modelDescription>Platinum RF Gateway</modelDescription>
+    <modelName>RF Gateway</modelName>
+    <modelNumber>1.0</modelNumber>
+    <UDN>uuid:d3fceec0-b625-4eac-b75c-f1d86417950c</UDN>
+    <protocol>crlf</protocol>
+    <handleChildren>1</handleChildren>
+    <implementationList>
+      <implementationFile>I_PlatinumShade.xml</implementationFile>
+    </implementationList>
+  </device>
+</root>
