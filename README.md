@@ -2,6 +2,7 @@
 
 Forked from https://github.com/schwark/smartthings-hunterdouglasplatinum
 
+See discussion on [SmartThings Community Forum](https://community.smartthings.com/t/hunter-douglas-platinum-bridge-integration/)
 
 ## Step 1: Get your blinds and your Platinum Gateway working with the Platinum App on your phone
 
