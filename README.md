@@ -40,7 +40,7 @@ python:
 	python getstatus.py <ip-address-of-gateway> > output.txt
 
 Any of these commands will give you an output.txt file that describes your blinds. 
-The SmartApp needs to find this file using a web request.  If you have a webserver running on your internal network, you can host it there. You may be able to use pastbin, apparently it supports downloading 'raw' files (you need to use the "raw" link to the file, not the standard link to the file.) Dropbox no longer supports 'raw' links, Dropbox will put a bunch of http around your output.txt file and the SmartApp won't be able to interpret it.  Maybe you have a wordpress site or have access to your company's website, and you can quietly host a little file on it at a hidden URL no-one will ever find.  
+The SmartApp needs to find this file using a web request.  If you have a webserver running on your internal network, you can maybe host it there, but I'm not sure if the original configuration program runs in the cloud (in which case it wouldn't be able to see your internal server) or locally. You may be able to use pastbin, apparently it supports downloading 'raw' files (you need to use the "raw" link to the file, not the standard link to the file.) Dropbox no longer supports 'raw' links, Dropbox will put a bunch of http around your output.txt file and the SmartApp won't be able to interpret it.  Maybe you have a wordpress site or have access to your company's website, and you can quietly host a little file on it at a hidden URL no-one will ever find.  
 
 ## Step 4: Install the SmartApp in SmartThings using your phone.
 
