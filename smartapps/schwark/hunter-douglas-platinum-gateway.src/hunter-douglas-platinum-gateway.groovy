@@ -272,7 +272,7 @@ def updateScenes(DB) {
 	DB['scenes']?.each() { id, sceneMap ->
 		def name = sceneMap['name']
 		log.debug("processing scene ${id} with name ${name}")
-		def PREFIX = "PLATINUMGATEWAYSCENE"
+		def PREFIX = "PLATINUMGATEWAYSCENY"
 		def hubId = getHubId()
 		def sceneDevice = addChildDevice("schwark", "Platinum Gateway Scene Switch", "${PREFIX}${id}", hubId, ["name": "PlatinumScene.${id}", "label": "${namePrefix}${name}", "completedSetup": true])
 		log.debug("created child device ${PREFIX}${id} for scene ${id} with name ${name} and hub ${hubId}")
